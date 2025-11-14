@@ -1,0 +1,83 @@
+Yourself (draft)
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Normalize Text</title>
+
+</head>
+
+<body>
+
+
+
+<h2>Normalize Text File</h2>
+
+
+
+<form id="form" method="POST">
+
+    Select File: <input type="file" name="file" required><br><br>
+
+
+
+    Mode:
+
+    <select name="mode">
+
+        <option value="compress">Compress</option>
+
+        <option value="expand">Expand</option>
+
+    </select><br><br>
+
+
+
+    <button type="submit">Normalize</button>
+
+</form>
+
+
+
+<div id="result"></div>
+
+
+
+<script>
+
+document.getElementById("form").onsubmit = function(e){
+
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+
+
+    fetch("normalize.php", {
+
+        method: "POST",
+
+        body: formData
+
+    })
+
+    .then(res => res.text())
+
+    .then(data => {
+
+        document.getElementById("result").innerHTML = data;
+
+    });
+
+}
+
+</script>
+
+
+
+</body>
+
+</html>
+
